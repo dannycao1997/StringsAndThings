@@ -1,6 +1,8 @@
 package io.zipcoder;
 
 
+import org.apache.maven.shared.utils.StringUtils;
+
 /**
  * @author tariq
  */
@@ -51,20 +53,13 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        String withIs = input;
-        String withNot = input;
-        int countIs = 0;
-        int countNot = 0;
-
-        while(withIs.contains("is")) {
-            countIs++;
-            withIs = withIs.replaceFirst("is", "");
+        int isCount  = StringUtils.countMatches(input, "is");
+        int notCount = StringUtils.countMatches(input, "not");
+        if(isCount == notCount) {
+            return true;
         }
-        while(withNot.contains("not")) {
-            countNot++;
-            withNot = withIs.replaceFirst("not", "");
-        }
-        return countIs == countNot;
+        else
+            return false;
     }
 
 
