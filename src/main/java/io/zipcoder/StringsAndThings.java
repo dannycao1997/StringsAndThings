@@ -51,7 +51,20 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        String withIs = input;
+        String withNot = input;
+        int countIs = 0;
+        int countNot = 0;
+
+        while(withIs.contains("is")) {
+            countIs++;
+            withIs = withIs.replaceFirst("is", "");
+        }
+        while(withNot.contains("not")) {
+            countNot++;
+            withNot = withIs.replaceFirst("not", "");
+        }
+        return countIs == countNot;
     }
 
 
